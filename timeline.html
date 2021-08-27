@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:chm="http://www.advene.org/ns/chm">
+<!-- Mirrored from advene.org/chm/API/timeline.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 27 Aug 2021 22:44:03 GMT -->
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>WebCHM Hypervideo: Timelines</title>
+	
+
+<script type="text/javascript" src="chm.api/libs/jquery.js"></script>
+<script type="text/javascript" src="chm.api/libs/jqueryui.js"></script>
+<script type="text/javascript" src="chm.api/libs/jquery.tmpl.js"></script>
+<script type="text/javascript" src="chm.api/libs/mediaelement.js"></script>
+
+<script type="text/javascript" src="chm.api/libs/timeline.js"></script>
+<script type="text/javascript" src="chm.api/libs/html5slider.js"></script>
+
+<script type="text/javascript" src="chm.api/chm.api.js"></script>
+<script type="text/javascript" src="chm.api/chm.player.js"></script>
+<script type="text/javascript" src="chm.api/chm.ts.js"></script>
+
+<link type="text/css" href="chm.api/res/theme/jqueryui.css" rel="stylesheet">
+<link type="text/css" href="chm.api/res/style.css" rel="stylesheet">
+
+  
+  <style>
+.player-container{
+right:200px!important;
+}
+.descript{
+background-color:#AFFFFF;
+width:40%; 
+left:20px;
+border: 3px solid #DADADA;
+padding:10px; 
+position:absolute;
+top:10px;
+bottom:75px;
+overflow:scroll;
+}
+  </style>
+  
+  <script src="samples.js"></script>
+</head><body>
+<a href="https://advene.org/chm/samples.html"><strong src="chm.api/res/chm.png" style="margin: 0pt; padding: 0pt; position: fixed; top: 0pt; right: 20px;">back
+to Samples</strong></a>
+<div class="ui-corner-all descript">
+<h2>Hypervideo Timelines</h2>
+<input id="button" value="Complete Source Code!" type="submit"><br>
+<br>
+Hypervideo timelines present the document story meaningful events and
+features in a graphical manner. The widget <em>chm:timeline</em>
+instanciates such representation and has as attributes the data query
+and eventually some other parameters that allow the definition of the
+chosen graphical aspect such as figures and animations.
+<p>We first declare the needed data reader. The data is stored
+following a json format in the Nosferatu.json file.
+</p>
+<pre>&lt;<span class="tag">div</span> <span class="chmcomponent">chm:component</span><span>="jsonreader"</span> <span class="idattribut">id="data"</span> <span class="chmattribut">chm:src</span><span>="Nosferatu.json"</span> &gt;<br></pre>
+
+<p>
+The video is displayed by the CHM media player provided the URI of the
+file.
+</p>
+<pre>&lt;<span class="tag">div</span> <span class="chmcomponent">chm:component</span><span>="videoplayer"</span> <span class="idattribut">id="tm"</span> <span class="chmattribut">chm:src</span><span>="http://advene.org/video/nosferatuVCD_256kb.ogv"</span> &gt;<br></pre>
+
+<p>
+</p><p>A timeline is associated with the displayed video. Two types of
+tracks are presented: the emotional scenes (in green), mainly fear and
+joy ones, and the actor appearences (in red) are presented within the
+timeline.<br>
+</p>
+<pre>&lt;<span class="tag">div</span> <span class="chmcomponent">chm:component</span><span>="timeline"&gt;</span> &lt;div <span class="chmcomponent">chm:component</span><span>="track" </span><span class="chmattribut">chm:src</span><span>="data"</span> <span class="chmattribut">chm:filter</span><span>="type=='Joy'||type=='Fear'"</span><span></span> <span class="chmattribut">chm:timelineref</span><span>="tm"</span> &gt;&lt;/div&gt;<br>&lt;div <span class="chmcomponent">chm:component</span><span>="track" </span><span class="chmattribut">chm:src</span><span>="data"</span> <span class="chmattribut">chm:filter</span><span>="type=='actor'"</span><span></span> <span class="chmattribut">chm:timelineref</span><span>="tm"</span> &gt;&lt;/div&gt;&lt;/div&gt;</pre>
+
+</div>
+
+<div chm:component="jsonreader" id="data" chm:src="Nosferatu.json"></div>
+<div chm:component="videoplayer" chm:src="http://advene.org/video/nosferatuVCD_256kb.ogv" id="tm" style="top: 10%; left: 40%; width: 50%;"></div> 
+<div chm:component="timeline" style="width: 40%; right: 0pt;">
+	<div chm:component="track" class="track" chm:src="data" chm:filter="type=='Joy'||type=='Fear'"></div>
+	<div chm:component="track" class="track" chm:src="data" chm:filter="type=='actor'"></div>
+</div>
+
+
+<div id="popupContact"> <a id="popupContactClose">x</a>
+<h1>Source Code of the Sample</h1>
+<script type="syntaxhighlighter" class="brush: xml"><![CDATA[
+&lt;div chm:component="timeline"&gt; &lt;div chm:component="track"
+chm:src="data" chm:filter="type=='Joy'||type=='Fear'"
+chm:timelineref="tm" &gt;&lt;/div&gt;<br>
+&lt;div chm:component="track" chm:src="data" chm:filter="type=='actor'"
+chm:timelineref="tm" &gt;&lt;/div&gt;&lt;/div&gt;
+]]></script>
+<hr> <span id="contactArea"> Press ESCAPE, Click on X (right-top) or
+Click Out from the popup to close the popup! </span> </div>
+
+
+<script language="javascript">
+SyntaxHighlighter.all();
+</script>
+</body>
+<!-- Mirrored from advene.org/chm/API/timeline.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 27 Aug 2021 22:44:03 GMT -->
+</html>

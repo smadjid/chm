@@ -1,0 +1,87 @@
+<html xmlns:chm="http://www.advene.org/ns/chm">
+
+<!-- Mirrored from advene.org/chm/API/subtitles.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 27 Aug 2021 22:44:00 GMT -->
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>WebCHM Hypervideo: Subtitles</title>
+<script type="text/javascript" src="chm.api/libs/timeline.js"></script>
+<script type="text/javascript" src="chm.api/libs/html5slider.js"></script>
+<script type="text/javascript" src="chm.api/libs/jquery.js"></script>
+<script type="text/javascript" src="chm.api/libs/jqueryui.js"></script>
+<script type="text/javascript" src="chm.api/libs/jquery.tmpl.js" ></script>
+<script type="text/javascript" src="chm.api/libs/mediaelement.js"></script>
+
+<script type="text/javascript" src="chm.api/chm.api.js"></script>
+<script type="text/javascript" src="chm.api/chm.player.js"></script>
+<script type="text/javascript" src="chm.api/chm.ts.js"></script>
+
+<link type="text/css" href="chm.api/res/theme/jqueryui.css" rel="stylesheet"></link>
+<link type="text/css" href="chm.api/res/style.css" rel="stylesheet"></link>
+
+<script src='samples.js'></script>
+
+</head>
+<body>
+<a href="https://advene.org/chm/samples.html"<strong src="chm.api/res/chm.png" style="padding:0; margin:0; position:fixed; top:0;right:20px" >back to Samples</strong></a>
+<div class="ui-corner-all descript">
+<h2>Hypervideo Subtitles</h2>
+<input id="button" type="submit" value="Complete Source Code!"/><br/><br/>
+One of the usual features when watching videos is to display the accompanying subtitles. The code that allows this whith CHM is quite simple and takes about three lines.<br/>
+<p>
+We first declare the needed data reader. The data is stored following a json format in the Tim.json file.
+<pre>
+&lt;<span class="tag">div</span> <span class="chmcomponent">chm:component</span><span>="jsonreader"</span> <span class="idattribut">id="data"</span> <span class="chmattribut">chm:src</span><span>="Tim.json"</span> &gt;
+</pre>
+</p>
+<p>
+The video is displayed by the CHM media player provided the URI of the file.
+<pre>
+&lt;<span class="tag">div</span> <span class="chmcomponent">chm:component</span><span>="videoplayer"</span> <span class="idattribut">id="tm"</span> <span class="chmattribut">chm:src</span><span>="http://advene.org/video/TimBerners-Lee_2009.ogv"</span> &gt;
+</pre>
+</p>
+ <p>
+ The subtitle text is displayed by a caption component that is related to the videoplayer. The displayed data is accessed by querying the data reader with the required parameters. We need to retrieve the set of annotations representing the 'Transcript' type which is the transcription of the discourse and to display the content on and by reference to the video player identified by its ID.</p>
+<pre>
+&lt;<span class="tag">div</span> <span class="chmcomponent">chm:component</span><span>="caption"</span> <span class="chmattribut">chm:src</span><span>="data"</span> <span class="chmattribut">chm:filter</span><span>="type=='Transcript'"</span> <span class="chmattribut">chm:content</span><span>="${content}"</span> <span class="chmattribut">chm:timelineref</span><span>="tm"</span> &gt;
+</pre>
+</p>
+	
+</div>
+
+
+<div chm:component="jsonreader" id="data" chm:src="Tim.json"></div>
+<div chm:component="videoplayer"  chm:src="http://advene.org/video/TimBerners-Lee_2009.ogv" id="tm" style="top:10%;left:45%; width:50%;"></div> 
+<div chm:component='caption'  chm:src='data' chm:filter="type=='Transcript'" chm:content="${content}" chm:timelineref="tm"></div>
+<div chm:component='textviewer'  chm:src='data' chm:filter="type=='TranscriptFr'" chm:content="${content}" chm:timelineref="tm" style="position:fixed; left:45%; top:65%; width:50%;border:solid grey;"><strong>French Translation</strong></div>
+
+
+
+<div id="popupContact">
+		<a id="popupContactClose">x</a>
+		<h1>Source Code of the Sample</h1>
+<script type="syntaxhighlighter" class='brush: xml'><![CDATA[
+&lt;div chm:component="jsonreader" id="data" chm:src="Tim.json"&gt;&lt;/div&gt;<br />
+&lt;div chm:component="videoplayer"  chm:src="http://advene.org/video/TimBerners-Lee_2009.ogv" id="tm" style="top:10%;left:45%; width:50%;"&gt;
+&lt;/div&gt; <br />
+&lt;div chm:component='caption'  chm:src='data' chm:filter="type=='Transcript'" chm:content="${content}" chm:timelineref="tm"&gt;
+&lt;/div&gt;<br />
+&lt;div chm:component='textviewer'  chm:src='data' chm:filter="type=='TranscriptFr'" chm:content="${content}" chm:timelineref="tm"&gt;
+&lt;strong&gt;French Translation&lt;/strong&gt;&lt;/div&gt;
+]]></script>
+
+<hr>
+		<span id="contactArea">
+		Press ESCAPE, Click on X (right-top) or Click Out from the popup to close the popup!
+		</span>
+	</div>
+	<div id="backgroundPopup"></div>
+
+<script language="javascript">
+SyntaxHighlighter.all();
+</script>
+
+</body>
+
+<!-- Mirrored from advene.org/chm/API/subtitles.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 27 Aug 2021 22:44:02 GMT -->
+</html>
+

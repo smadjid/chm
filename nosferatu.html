@@ -1,0 +1,72 @@
+<html xmlns:chm="http://www.advene.org/ns/chm">
+
+<!-- Mirrored from advene.org/chm/API/nosferatu.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 27 Aug 2021 22:44:03 GMT -->
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Nosferatu Hypervideo</title>
+<script type="text/javascript" src="chm.api/libs/timeline.js"></script>
+<script type="text/javascript" src="chm.api/libs/html5slider.js"></script>
+<script type="text/javascript" src="chm.api/libs/jquery.js"></script>
+<script type="text/javascript" src="chm.api/libs/jqueryui.js"></script>
+<script type="text/javascript" src="chm.api/libs/jquery.tmpl.js" ></script>
+<script type="text/javascript" src="chm.api/libs/mediaelement.js"></script>
+
+<script type="text/javascript" src="chm.api/chm.api.js"></script>
+<script type="text/javascript" src="chm.api/chm.player.js"></script>
+<script type="text/javascript" src="chm.api/chm.ts.js"></script>
+
+<link type="text/css" href="chm.api/res/theme/jqueryui.css" rel="stylesheet"></link>
+<link type="text/css" href="chm.api/res/style.css" rel="stylesheet"></link>
+</head>
+
+
+<body>
+<a href="https://advene.org/chm/samples.html"<strong src="chm.api/res/chm.png" style="padding:0; margin:0; position:fixed; top:0;right:20px" >back to Samples</strong></a>
+
+<h1>Nosferatu hypervideo!</h1>
+
+
+<p>The hypervideo you are currently viewing is designed as a demonstration of the WebCHM framework. It features an analysis of the famous <a href="http://www.archive.org/details/nosferatu"><em>Nosferatu</em></a> movie.
+
+<!-- The Annotation Reader -->
+<div chm:component="jsonreader" id="data" chm:src="Nosferatu.json"></div>
+
+<!-- The Data Reader from wikipedia.org-->
+<div chm:component="annotationreader" id="wiki" chm:src="http://en.wikipedia.org/w/api.php?action=parse&amp;props=text&amp;page="></div>
+
+<div chm:component="videoplayer"  chm:src="http://advene.org/video/nosferatuVCD_256kb.ogv" id="tm" style="left:270px;"></div> 
+
+<!-- Video Caption-->
+
+<div chm:component='caption'  chm:src='data' chm:filter="type=='panel'" chm:content="${parsed.textefr}" chm:timelineref="tm"></div>
+
+                             
+<div chm:component='map' chm:screenshot='false' chm:src='data' chm:filter="type=='movie_part'" chm:content="${parsed.nom}" chm:timelineref='tm' class="ui-corner-all" style="position:absolute; right:10px; padding: 2px; top: 150;width:auto; overflow:visible;background-color:azure">
+<h3>Movie Parts :</h3>
+
+</div>
+
+
+<div chm:component='textviewer' chm:src='data' chm:filter="type=='panel'" chm:content="${parsed.textefr}" chm:timelineref="tm" style="position:absolute;width:50%; hight:auto;bottom:100px; border: 2px solid #aaa;padding:2; left:245;overflow: visible;">
+</div>
+
+
+
+
+
+<div chm:component='timeline' chm:src='data'  chm:filter="type=='actor'" chm:param="title=${parsed.actor} img='imagescache/${parsed.figure}'">
+</div>
+
+
+<div id="toc" chm:component='toc' chm:src='data' chm:timelineref="tm" title="Movie Episodes" chm:filter="type=='episode'" chm:content="${parsed.nom}" style=' '></div>
+</div>
+
+
+<div class='shot ui-corner-all' chm:component='map' chm:timelineref="tm"  chm:screenshot='true' chm:src='data' chm:filter="type=='episode'" chm:content="${parsed.nom}"  chm:param="imagescache/%24%7bbegin%7d.html" >
+<div style="color:blue;background-color:white; width:100%;" class="ui-widget-content ui-corner-all">Movie Episods</div></div>
+
+</body>
+
+<!-- Mirrored from advene.org/chm/API/nosferatu.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 27 Aug 2021 22:44:04 GMT -->
+</html>
+
